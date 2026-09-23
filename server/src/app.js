@@ -1,8 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import itemRoutes from './routes/items.js';
 import userRoutes from './routes/users.js';
+import itemRoutes from './routes/items.js';
 
 const app = express();
 
@@ -25,5 +25,6 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({ message: err.message || 'Server Error' });
 });
+app.use('/api/items', itemRoutes);
 
 export default app;
